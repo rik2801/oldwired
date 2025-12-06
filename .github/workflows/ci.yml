@@ -1,0 +1,41 @@
+name: CI - Build & Test
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+      - feature/**
+  pull_request:
+    branches:
+      - main
+      - dev
+
+jobs:
+  build-and-test:
+    name: build-and-test
+    runs-on: ubuntu-latest
+
+    steps:
+      # Stage 1: checkout (like Jenkins' "Checkout from SCM")
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Stage 2: setup language (you’ll adjust this based on stack)
+      # ---- Example for Node/React ----
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Stage 3: install dependencies (equivalent to npm install / mvn install)
+      - name: Install dependencies
+        run: echo "TODO: replace with npm install or mvn install"
+
+      # Stage 4: run tests
+      - name: Run tests
+        run: echo "TODO: replace with npm test or mvn test"
+
+      # Stage 5: build
+      - name: Build project
+        run: echo "TODO: replace with npm run build or mvn package"
