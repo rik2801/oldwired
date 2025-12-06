@@ -1,10 +1,11 @@
-name: Java CI
+name: CI - Gradle
 
 on:
   push:
     branches:
       - main
       - dev
+      - monisha
       - feature/**
   pull_request:
     branches:
@@ -13,25 +14,28 @@ on:
 
 jobs:
   build-and-test:
-    name: Build and Test (Java)
+    name: build-and-test
     runs-on: ubuntu-latest
 
     steps:
-      # Stage 1: Checkout code
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Stage 2: Setup Java
-      - name: Setup Java 17
+      - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
 
-      # Stage 3: Install dependencies + run tests
-      - name: Build with Maven
-        run: mvn -B clean verify
+      # 🔹 TEMPORARY while you don't have a Gradle project yet
+      - name: Temporary placeholder
+        run: echo "Gradle pipeline wired. Replace this step with ./gradlew when project is ready."
 
-      # Stage 4: Package (optional)
-      - name: Package application
-        run: mvn -B package
+      # 🔹 LATER: when you create a Gradle project with wrapper, delete the step above
+      #    and UNCOMMENT the two steps below
+      #
+      # - name: Make Gradle wrapper executable
+      #   run: chmod +x ./gradlew
+      #
+      # - name: Build and test with Gradle
+      #   run: ./gradlew clean test build
