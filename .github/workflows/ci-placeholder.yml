@@ -1,0 +1,23 @@
+name: CI - Placeholder
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+      - feature/**
+  pull_request:
+    branches:
+      - main
+      - dev
+
+jobs:
+  placeholder:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Placeholder step
+        run: echo "CI is wired up. Replace this with real build/test when the project is ready."
